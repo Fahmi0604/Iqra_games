@@ -17,7 +17,7 @@ export const Board = memo(function Board({ accept, lastDroppedItem, onDrop, soal
     let color, transform = '';
 
     if (isActive) {
-        backgroundColor = 'bg-gray-400';
+        backgroundColor = 'bg-gray-300';
         transform = 'scale-110'
     }
     else if (canDrop) {
@@ -32,7 +32,7 @@ export const Board = memo(function Board({ accept, lastDroppedItem, onDrop, soal
 
         {lastDroppedItem &&
             (Iqra.filter(f => lastDroppedItem.name === f.nama_huruf).map(m => {
-                return <img className='w-2/5 rounded-lg' key={m.id_huruf} src={m.gambar_huruf} alt={m.nama_huruf}></img>
+                return <img className='w-1/3 rounded-lg' key={m.id_huruf} src={m.gambar_huruf} alt={m.nama_huruf}></img>
             }))
         }
     </div>);

@@ -67,7 +67,7 @@ export const Container = memo(function Container() {
     }
 
     return (
-        <div className='bg-custom-primary min-h-screen px-4 pt-2'>
+        <div className='bg-custom-primary min-h-screen px-4 md:px-8 xl:px-28 pt-4'>
             <h1 className='text-white'>1. Lengkapi Kotak dibawah dengan huruf hijaiyah : {Soal[counterPage].data.map(soal => soal.name).join(', ')} </h1>
             <div className='w-full flex justify-end my-4'>
                 <button className='bg-custom-green-primary text-white px-2 py-1 rounded-md shadow-custom-shadow-green' onClick={openModal}>

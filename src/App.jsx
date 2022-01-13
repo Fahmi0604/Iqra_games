@@ -3,11 +3,32 @@ import { Fragment, useState } from 'react';
 import { Disclosure, Dialog, Transition } from '@headlessui/react'
 import { SpeakerphoneIcon, MenuIcon, XIcon, ClipboardListIcon } from '@heroicons/react/solid'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import Home from './pages/Home';
 import Tugas from './pages/Tugas';
 import Game1 from './pages/Game1';
+
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { TouchBackend } from 'react-dnd-touch-backend'
+
+import { DndProvider, TouchTransition, MouseTransition } from 'react-dnd-multi-backend'
+
+export const HTML5toTouch = {
+  backends: [
+    {
+      id: 'html5',
+      backend: HTML5Backend,
+      transition: MouseTransition,
+    },
+    {
+      id: 'touch',
+      backend: TouchBackend,
+      options: { enableMouseEvents: true },
+      preview: true,
+      transition: TouchTransition,
+    },
+  ],
+}
+
 
 const navigation = [
   { name: 'Home', href: '/', current: false },
@@ -33,7 +54,7 @@ export default function App() {
   }
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider options={HTML5toTouch}>
       <Router>
         <Disclosure as="nav" className="bg-custom-primary">
           {({ open }) => (
