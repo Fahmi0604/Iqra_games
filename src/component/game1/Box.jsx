@@ -7,10 +7,11 @@ export const Box = memo(function Box({ name, type, isDropped, image, closeModal 
         type,
         item: { name },
         collect: (monitor) => (
-            monitor.isDragging() ? closeModal() : '',
             {
                 opacity: monitor.isDragging() ? 0.4 : 1,
-            }),
+                // eslint-disable-next-line no-sequences
+            }, monitor.isDragging() ? closeModal() : ''
+        ),
     }), [name, type]);
 
     return (<div className={`${opacity} w-1/4 h-auto mx-1% my-2`} ref={drag} >
