@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import { memo } from 'react';
 import { useDrag } from 'react-dnd';
 
@@ -7,10 +8,10 @@ export const Box = memo(function Box({ name, type, isDropped, image, closeModal 
         type,
         item: { name },
         collect: (monitor) => (
+            monitor.isDragging() ? closeModal() : '',
             {
                 opacity: monitor.isDragging() ? 0.4 : 1,
-                // eslint-disable-next-line no-sequences
-            }, monitor.isDragging() ? closeModal() : ''
+            }
         ),
     }), [name, type]);
 
